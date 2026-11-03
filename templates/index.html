@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Performance Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <h1>Study Performance Prediction 🎓</h1>
+        <p>Student Performance Analysis and Study Recommendation System</p>
+    </div>
+
+    <div class="card p-4 shadow">
+        <h3>Enter Student Details</h3>
+
+        {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+            <label class="form-label">Student Name</label>
+            <input type="text" name="name" class="form-control mb-3" required>
+
+            <label class="form-label">Daily Study Hours</label>
+            <input type="number" name="study_hours" min="0" max="24" step="0.5" class="form-control mb-3" required>
+
+            <label class="form-label">Attendance Percentage</label>
+            <input type="number" name="attendance" min="0" max="100" class="form-control mb-3" required>
+
+            <label class="form-label">Previous Marks</label>
+            <input type="number" name="previous_marks" min="0" max="100" class="form-control mb-3" required>
+
+            <label class="form-label">Assignment Completion (%)</label>
+            <input type="number" name="assignment_completion" min="0" max="100" class="form-control mb-3" required>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Predict Performance
+            </button>
+        </form>
+    </div>
+
+    {% if result %}
+    <div class="card p-4 mt-4 shadow">
+        <h3>Prediction Result</h3>
+        <h2>{{ result.predicted }}%</h2>
+        <h4>Study Recommendations</h4>
+        <p>{{ result.recommendation }}</p>
+    </div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="/history" class="btn btn-outline-primary">View Prediction History</a>
+    </div>
+</div>
+
+</body>
+</html>
