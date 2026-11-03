@@ -1,0 +1,44 @@
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+}
+
+p {
+    color: #555;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+}
+
+.card h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.btn-primary {
+    background-color: #5b4bdb;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background-color: #4030b5;
+}
+
+table {
+    background: white;
+}
